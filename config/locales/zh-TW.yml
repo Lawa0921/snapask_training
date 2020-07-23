@@ -1,16 +1,35 @@
 zh-TW:
   activerecord:
-    user:
-      roles:
-        member: "一般會員"
-        teacher: "老師"
-        admin: "管理員"
-    errors:
-      messages:
-        record_invalid: '校驗失敗: %{errors}'
-        restrict_dependent_destroy:
-          has_one: 由於 %{record} 需要此記錄，所以無法移除記錄
-          has_many: 由於 %{record} 需要此記錄，所以無法移除記錄
+    attributes:
+      user:
+        roles:
+          member: "一般會員"
+          teacher: "老師"
+          admin: "管理員"
+      errors:
+        messages:
+          record_invalid: '校驗失敗: %{errors}'
+          restrict_dependent_destroy:
+            has_one: 由於 %{record} 需要此記錄，所以無法移除記錄
+            has_many: 由於 %{record} 需要此記錄，所以無法移除記錄
+      course:
+        name: "課程名"
+        price: "價格"
+        valididy_period: "有限期限"
+        currencies:
+          TWD: "TWD"
+          USD: "USD"
+          JPD: "JPD"
+          CNY: "CNY"
+        type_of_courses:
+          math: "數學"
+          english: "英文" 
+          japanese: "日文"
+          chinese: "國文"
+          social: "社會"
+          science: "自然"
+          history: "歷史"
+          other: "其他"
   date:
     abbr_day_names:
     - 周日
@@ -240,6 +259,27 @@ zh-TW:
       current_password: "需要輸入當前密碼以確認變更"
     confirm:
       cancel: "您確定要刪除您的帳號嗎？"
+  courses:
+    list: "課程清單"
+    new: "新增課程"
+    created: "課程已成功建立"
+    create_fail: "課程建立失敗"
+    name: "課程名"
+    description: "課程描述"
+    price: "價格"
+    currency: "幣別"
+    type: "類別"
+    public: "公開"
+    url: "網址"
+    valididy_period: "有限期限"
+    edit: "編輯課程"
+    update: "更新課程"
+    update_fail: "課程更新失敗"
+    delete: "刪除課程成功"
+    delete_fail: "刪除課程失敗"
+    time_left: "剩餘時間"
+    confirm:
+      delete: "您確定要刪除該課程嗎？"
   show: "檢視"
   edit: "編輯"
   delete: "刪除"
