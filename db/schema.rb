@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_065718) do
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
-    t.string "topic", null: false
+    t.string "name", null: false
     t.integer "price", null: false
     t.integer "currency", default: 0, null: false
     t.integer "type_of_course", default: 0, null: false

@@ -1,7 +1,7 @@
 class CreateCourses < ActiveRecord::Migration[5.2]
   def change
     create_table :courses do |t|
-      t.string :topic,              null: false
+      t.string :name,              null: false
       t.integer :price,             null: false
       t.integer :currency,          null: false, default: 0
       t.integer :type_of_course,    null: false, default: 0

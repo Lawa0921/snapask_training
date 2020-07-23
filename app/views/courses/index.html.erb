@@ -1,0 +1,12 @@
+<% @courses.each do |course| %>
+  <div>
+    <%= course.name %>
+    <%= course.price %>
+    <%= course.currency %>
+    <%= course.type_of_course %>
+    <%= course.description %>
+    <%= course.public %>
+    <%= course.url %>
+    <%= course.valididy_period %>
+  </div>
+<% end %>

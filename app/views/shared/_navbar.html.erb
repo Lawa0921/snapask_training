@@ -4,6 +4,7 @@
   <%= link_to(t("users.log_out"), destroy_user_session_path, :method => :delete) %> |
   <%= link_to(t("users.edit_account"), edit_registration_path(:user)) %>
   <%= link_to(t("courses.list"), courses_path)%>
+  <%= link_to(t("courses.new"), new_course_path)%>
 <% else %>
   <%= link_to(t("users.sign_up"), new_registration_path(:user)) %> |
   <%= link_to(t("users.log_in"), new_session_path(:user)) %>

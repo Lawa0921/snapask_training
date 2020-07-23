@@ -11,6 +11,24 @@ en:
         restrict_dependent_destroy:
           has_one: Cannot delete record because a dependent %{record} exists
           has_many: Cannot delete record because dependent %{record} exist
+    course:
+      name: "Name"
+      price: "Price"
+      valididy_period: "Valididy period"
+      currencies:
+        TWD: "TWD"
+        USD: "USD"
+        JPD: "JPD"
+        CNY: "CNY"
+      type_of_courses:
+        math: "Math"
+        english: "English" 
+        japanese: "Japanese"
+        chinese: "Chinese"
+        social: "Social"
+        science: "Science"
+        history: "History"
+        other: "Other"
   date:
     abbr_day_names:
     - Sun
@@ -243,6 +261,17 @@ en:
       cancel: "Are you sure you want to cancel your account?"
   courses:
     list: "Course list"
+    new: "New course"
+    created: "Course create success"
+    create_fail: "Course create failure"
+    name: "Name"
+    description: "Description"
+    price: "Price"
+    currency: "Currency"
+    type: "Type"
+    public: "Public"
+    url: "Url"
+    valididy_period: "Valididy period"
   show: "Show"
   edit: "Edit"
   delete: "Delete"
