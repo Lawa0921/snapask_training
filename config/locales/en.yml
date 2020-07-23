@@ -241,6 +241,8 @@ en:
       current_password: "we need your current password to confirm your changes"
     confirm:
       cancel: "Are you sure you want to cancel your account?"
+  courses:
+    list: "Course list"
   show: "Show"
   edit: "Edit"
   delete: "Delete"
