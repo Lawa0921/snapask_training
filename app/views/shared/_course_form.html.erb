@@ -7,9 +7,26 @@
     </ul>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :name, t("courses.name")%>
-    <%= f.text_field :name, class: "form-control"%>
+  <div class="form-row">
+    <div class="form-group col-12 col-md-8">
+      <%= f.label :name, t("courses.name")%>
+      <%= f.text_field :name, class: "form-control"%>
+    </div>
+    <div class="form-group col-12 col-md-4">
+      <%= f.label :type_of_course, t("courses.type") %>
+      <%= f.select :type_of_course, enum_collection("course", "type_of_course"), {}, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-12 col-md-6">
+      <%= f.label :url, t("courses.url") %>
+      <%= f.url_field :url, class: "form-control" %>
+    </div>
+    <div class="form-group col-12 col-md-6">
+      <%= f.label :valididy_period, t("courses.valididy_period") %> 
+      <%= f.datetime_field :valididy_period, min: Date.tomorrow, max: 30.days.after, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">
@@ -17,33 +34,21 @@
     <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :url, t("courses.url") %>
-    <%= f.url_field :url, class: "form-control" %>
+  <div class="form-row">
+    <div class="form-group col-12 col-md-6">
+      <%= f.label :price, t("courses.price") %>
+      <%= f.number_field :price, class: "form-control" %>
+    </div>
+    <div class="form-group col-12 col-md-6">
+      <%= f.label :currency, t("courses.currency") %>
+      <%= f.select :currency, enum_collection("course", "currency"), {}, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :type_of_course, t("courses.type") %>
-    <%= f.select :type_of_course, enum_collection("course", "type_of_course"), {}, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :price, t("courses.price") %>
-    <%= f.number_field :price, class: "form-control" %>
-    <%= f.label :currency, t("courses.currency") %>
-    <%= f.select :currency, enum_collection("course", "currency"), {}, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
+  <div class="form-group col-12">
     <%= f.label :public, t("courses.public") %>
     <%= f.check_box :public %>
   </div>
-
-  <div class="form-group">
-    <%= f.label :valididy_period, t("courses.valididy_period") %> 
-    <%= f.datetime_field :valididy_period, min: Date.tomorrow, max: 30.days.after, class: "form-control" %>
-  </div>
-
   <div>
     <%= f.submit t("courses.new"), class: "btn btn-primary"%>
   </div>
