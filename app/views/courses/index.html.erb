@@ -9,5 +9,7 @@
     <%= course.url %>
     <%= course.valididy_period %>
     <%= link_to t("edit"), edit_course_path(course)%>
+    <%= link_to t("show"), course_path(course)%>
+    <%= link_to t("delete"), course_path(course), data: {confirm: t("courses.confirm.delete"), method: "DELETE" }%>
   </div>
 <% end %>

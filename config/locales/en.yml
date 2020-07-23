@@ -275,6 +275,11 @@ en:
     edit: "Edit course"
     update: "Update course"
     update_fail: "Update course fail"
+    delete: "Delete course"
+    delete_fail: "Delete course fail"
+    time_left: "Time left"
+    confirm:
+      delete: "Are you sure you want to delete this course?"
   show: "Show"
   edit: "Edit"
   delete: "Delete"

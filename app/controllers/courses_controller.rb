@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:edit, :update]
+  before_action :set_course, only: [:edit, :update, :show, :destroy]
 
   def index
     @courses = Course.all
@@ -30,6 +30,18 @@ class CoursesController < ApplicationController
       flash[:notice] = t('courses.fail')
       render :edit
     end
+  end
+
+  def show
+  end
+
+  def destroy
+    if @course.destroy
+      flash[:notice] = t('courses.delete')
+    else
+      flash[:notice] = t('courses.delete_fail')
+    end
+    redirect_to courses_path
   end
 
   private

@@ -1,0 +1,22 @@
+  <h1><%= @course.name %></h1>
+  <h3><%= t("courses.type")%>：<%= i18n_enum("course", "type_of_course", @course.type_of_course) %></h3>
+
+  <div>
+    <%= t("courses.price")%>：<%= @course.price %> <%= @course.currency %>
+  </div>
+
+  <div>
+    <%= t("courses.public")%>：<%= @course.public %>
+  </div>
+
+  <div>
+    <%= t("courses.url")%>： <%= @course.url %>
+  </div>
+
+  <div>
+    <%= t("courses.description")%>：<%= @course.description %>
+  </div>
+
+  <div>
+    <%= t("courses.time_left")%>：<%= calculate_time_left(@course.valididy_period) %>
+  </div>

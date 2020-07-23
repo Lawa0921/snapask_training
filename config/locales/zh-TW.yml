@@ -275,6 +275,11 @@ zh-TW:
     edit: "編輯課程"
     update: "更新課程"
     update_fail: "課程更新失敗"
+    delete: "刪除課程成功"
+    delete_fail: "刪除課程失敗"
+    time_left: "剩餘時間"
+    confirm:
+      delete: "您確定要刪除該課程嗎？"
   show: "檢視"
   edit: "編輯"
   delete: "刪除"
