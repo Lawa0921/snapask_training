@@ -276,6 +276,7 @@ zh-TW:
     delete: "刪除課程成功"
     delete_fail: "刪除課程失敗"
     time_left: "剩餘時間"
+    none_message: "你沒有開啟任何課程，要開啟一個課程嗎？"
     confirm:
       delete: "您確定要刪除該課程嗎？"
   show: "檢視"
