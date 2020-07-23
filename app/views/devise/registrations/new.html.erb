@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :role, t("users.role") %><br />
-    <%= f.text_field :role %>
+    <%= f.select :role, enum_collection("user", "role")%>
   </div>
 
   <div class="actions">
