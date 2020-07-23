@@ -1,7 +1,7 @@
   <% if current_user %>
-    <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
-    <%= link_to('修改密碼', edit_registration_path(:user)) %>
+    <%= link_to(t("users.log_out"), destroy_user_session_path, :method => :delete) %> |
+    <%= link_to(t("users.edit"), edit_registration_path(:user)) %>
   <% else %>
-    <%= link_to('註冊', new_registration_path(:user)) %> |
-    <%= link_to('登入', new_session_path(:user)) %>
+    <%= link_to(t("users.sign_up"), new_registration_path(:user)) %> |
+    <%= link_to(t("users.log_in"), new_session_path(:user)) %>
   <% end %>
