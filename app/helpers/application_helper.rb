@@ -5,6 +5,6 @@ module ApplicationHelper
 
   def enum_collection(model_name, enum_name)
     @model = model_name.capitalize.constantize
-    @model.send(enum_name.to_s.pluralize).keys.collect { |val| [i18n_enum(model_name, enum_name, val), val] }
+    @model.send(enum_name.to_s.pluralize).keys.map { |val| [i18n_enum(model_name, enum_name, val), val] }
   end
 end
