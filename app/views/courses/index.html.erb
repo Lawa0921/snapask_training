@@ -1,15 +1,50 @@
-<% @courses.each do |course| %>
-  <div>
-    <%= course.name %>
-    <%= course.price %>
-    <%= course.currency %>
-    <%= course.type_of_course %>
-    <%= course.description %>
-    <%= course.public %>
-    <%= course.url %>
-    <%= course.valididy_period %>
-    <%= link_to t("edit"), edit_course_path(course)%>
-    <%= link_to t("show"), course_path(course)%>
-    <%= link_to t("delete"), course_path(course), data: {confirm: t("courses.confirm.delete"), method: "DELETE" }%>
-  </div>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <td><%= t("courses.name") %></td>
+    <td><%= t("courses.price") %></td>
+    <td><%= t("courses.currency") %></td>
+    <td><%= t("courses.type") %></td>
+    <td><%= t("courses.public") %></td>
+    <td><%= t("courses.url") %></td>
+    <td><%= t("courses.valididy_period") %></td>
+    <td><%= t("show") %></td>
+    <td><%= t("edit") %></td>
+    <td><%= t("delete") %></td>
+  </thead>
+  <tbody>
+    <% @courses.each do |course|%>
+      <tr>
+        <td>
+          <%= course.name %>
+        </td>
+        <td>
+          <%= course.price %>
+        </td>
+        <td>
+          <%= course.currency %>
+        </td>
+        <td>
+          <%= i18n_enum("course", "type_of_course", course.type_of_course) %>
+        </td>
+        <td>
+          <%= course.public %>
+        </td>
+        <td>
+          <%= course.url %>
+        </td>
+        <td>
+          <%= calculate_time_left(course.valididy_period) %>
+        </td>
+        <td>
+          <%= link_to t("show"), course_path(course), class: "btn btn-primary" %>
+        </td>
+        <td>
+          <%= link_to t("edit"), edit_course_path(course), class: "btn btn-success" %>
+        </td>
+        <td>
+          <%= link_to t("delete"), course_path(course), data: {method: "DELETE", confirm: t("courses.delete_confirm")}, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
