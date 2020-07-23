@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def teacher_or_admin?
+    current_user.role != "member"
+  end
+
   def calculate_time_left(time)
     distance_of_time_in_words(time, DateTime.now)
   end

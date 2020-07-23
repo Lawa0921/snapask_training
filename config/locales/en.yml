@@ -248,12 +248,11 @@ en:
     new_user: "New user"
     update: "User updated"
     longer: "must be longer than 6 characters"
-    present: "must be present"
-    confirmation: "and confirmation is not seem"
     remember: "Remember"
     forgot: "Forgot your password?"
     cancel_account: "Cancel my account"
     back: "Back"
+    check_role: "Don't have enough authority"
     edit:
       password_role: "leave blank if you don't want to change it"
       current_password: "we need your current password to confirm your changes"
