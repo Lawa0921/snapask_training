@@ -7,7 +7,7 @@ class Cart
 
   def add_course(course)
     count = courses.count
-    @courses << course if not @courses.include?(course)
+    @courses << course unless @courses.include?(course)
     courses.count > count ? @add_success = true : @add_success = false
   end
 
@@ -26,7 +26,7 @@ class Cart
 
   def to_hash
     courses = @courses.map { |course|  
-      { "price" => course.price, "name" => course.name, "id" => course.id } 
+      { "id" => course.id } 
     }
 
     return { "courses" => courses }

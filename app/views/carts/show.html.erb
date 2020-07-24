@@ -11,7 +11,6 @@
         <td><%= t("courses.price") %></td>
         <td><%= t("courses.currency") %></td>
         <td><%= t("courses.type") %></td>
-        <td><%= t("courses.public") %></td>
         <td><%= t("courses.url") %></td>
         <td><%= t("courses.valididy_period") %></td>
       </tr>
@@ -23,7 +22,6 @@
         <td><%= course.price %></td>
         <td><%= course.currency %></td>
         <td><%= i18n_enum("course", "type_of_course", course.type_of_course) %></td>
-        <td><%= course.public %></td>
         <td><%= course.url %></td>
         <td><%= course.valididy_period %> <%= t("datetime.prompts.day")%></td>
       </tr>
@@ -32,7 +30,7 @@
     <tfoot>
       <tr>
         <td colspan="2"><%= t("total")%></td>
-        <td colspan="5"></td>
+        <td colspan="4"></td>
       </tr>
     </tfoot>
   </table>
