@@ -3,7 +3,8 @@ class CartsController < ApplicationController
     course = Course.find(params[:id])
     current_cart.add_course(course)
     session[:cart] = current_cart.to_hash
-    redirect_to root_path, notice: t("courses.add_cart_success")
+    current_cart.add_success ? flash[:notice] = t("courses.add_cart_success") : flash[:notice] = t("courses.cart_notice")
+    redirect_to root_path
   end
 
   def show

@@ -1,12 +1,14 @@
 class Cart
-  attr_reader :courses
+  attr_reader :courses, :add_success
 
   def initialize(courses = [])
     @courses = courses
   end
 
   def add_course(course)
+    count = courses.count
     @courses << course if not @courses.include?(course)
+    courses.count > count ? @add_success = true : @add_success = false
   end
 
   def self.from_hash(hash = nil)
