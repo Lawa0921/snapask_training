@@ -34,7 +34,7 @@
             <%= course.url %>
           </td>
           <td>
-            <%= calculate_time_left(course.valididy_period) %>
+            <%= course.valididy_period %> <%= t("datetime.prompts.day")%>
           </td>
           <td>
             <%= link_to t("show"), course_path(course), class: "btn btn-primary" %>
