@@ -269,7 +269,7 @@ zh-TW:
     type: "類別"
     public: "公開"
     url: "網址"
-    valididy_period: "有限期限"
+    valididy_period: "有限天數"
     edit: "編輯課程"
     update: "更新課程"
     update_fail: "課程更新失敗"
@@ -284,6 +284,7 @@ zh-TW:
   show: "檢視"
   edit: "編輯"
   delete: "刪除"
+  submit: "送出"
   notice:
     user:
       create_success: "註冊成功"

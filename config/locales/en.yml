@@ -285,6 +285,7 @@ en:
   show: "Show"
   edit: "Edit"
   delete: "Delete"
+  submit: "Submit"
   notice:
     user:
       create_success: "Sign up was successfully"

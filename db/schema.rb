@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_065718) do
+ActiveRecord::Schema.define(version: 2020_07_24_042617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 2020_07_23_065718) do
     t.boolean "public", default: true, null: false
     t.text "description"
     t.text "url"
-    t.datetime "valididy_period", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "valididy_period", default: 1, null: false
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
