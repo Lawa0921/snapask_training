@@ -16,7 +16,4 @@ module ApplicationHelper
     @model.send(enum_name.to_s.pluralize).keys.map { |val| [i18n_enum(model_name, enum_name, val), val] }
   end
 
-  def current_cart
-    @cart ||= Cart.from_hash(session[:cart])
-  end
 end
