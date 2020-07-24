@@ -20,3 +20,7 @@
   <div>
     <%= t("courses.valididy_period")%>：<%= @course.valididy_period %> <%= t("datetime.prompts.day")%>
   </div>
+
+  <div>
+    <%= link_to t("add_to_cart"), add_cart_path(@course), method: "POST", class: "btn btn-success"%>
+  </div>

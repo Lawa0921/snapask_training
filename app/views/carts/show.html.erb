@@ -1,0 +1,40 @@
+<h1>
+  <%= t("courses.cart")%>
+  <%= link_to t("courses.clean_cart"), cart_path, method: 'delete', class: 'btn btn-sm btn-success' unless current_cart.empty? %>
+</h1>
+
+<% if not current_cart.empty? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <td><%= t("courses.name") %></td>
+        <td><%= t("courses.price") %></td>
+        <td><%= t("courses.currency") %></td>
+        <td><%= t("courses.type") %></td>
+        <td><%= t("courses.url") %></td>
+        <td><%= t("courses.valididy_period") %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_cart.courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.price %></td>
+        <td><%= course.currency %></td>
+        <td><%= i18n_enum("course", "type_of_course", course.type_of_course) %></td>
+        <td><%= course.url %></td>
+        <td><%= course.valididy_period %> <%= t("datetime.prompts.day")%></td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><%= t("total")%></td>
+        <td colspan="4"></td>
+      </tr>
+    </tfoot>
+  </table>
+<% end %>
+
+<%= link_to t("keep_shoping"), root_path, class: 'btn btn-primary' %>
+<%= link_to t("checkout"), '#', class: 'btn btn-danger' unless current_cart.empty? %>
