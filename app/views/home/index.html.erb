@@ -1,0 +1,50 @@
+<div class="container">
+  <h1><%= t('courses.available_for_purchase')%></h1>
+  <div class="row">
+    <% @available_for_purchase_courses.each do |course| %>
+      <%= link_to course_path(course), class:"main-card-link col-12 col-md-6" do %>
+        <div class="card m-3">
+          <h5 class="px-3 py-1">
+            <%= course.name %>
+          </h5>
+          <div class="card-body px-3 py-1">
+            <%= course.description %>
+            <div class="type-info">
+              <%= i18n_enum("course", "type_of_course", course.type_of_course) %>
+            </div>
+            <div class="price-info"> 
+              <%= course.price %> <%= course.currency%>
+            </div>
+            <div class="valididy_period-info">
+              <%= t("courses.time_left")%>：<%= calculate_time_left(course.valididy_period) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <h1><%= t('courses.expired')%></h1>
+  <div class="row">
+    <% @expired_courses.each do |course| %>
+      <div class="main-card-link col-12 col-md-6" style="pointer-events:none;">
+        <div class="card m-3">
+          <h5 class="px-3 py-1">
+            <%= course.name %>
+          </h5>
+          <div class="card-body px-3 py-1">
+            <%= course.description %>
+            <div class="type-info">
+              <%= i18n_enum("course", "type_of_course", course.type_of_course) %>
+            </div>
+            <div class="price-info"> 
+              <%= course.price %> <%= course.currency%>
+            </div>
+            <div class="valididy_period-info">
+              <%= t("courses.time_left")%>：<%= calculate_time_left(course.valididy_period) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
