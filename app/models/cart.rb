@@ -6,8 +6,7 @@ class Cart
   end
 
   def add_course(course)
-    found_course = @courses.find {|course| course.id == course.id}
-    @courses << course if found_course.blank?
+    @courses << course if not @courses.include?(course)
   end
 
   def self.from_hash(hash = nil)
