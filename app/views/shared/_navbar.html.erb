@@ -21,6 +21,14 @@
             <%= link_to t("courses.new"), new_course_path, class: "nav-link" %>
           </li>
         <% end %>
+        <li class="nav-item ml-auto">
+          <%= link_to t("courses.clean_cart"), cart_path, method: "DELETE", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to cart_path, class: "nav-link" do %>
+            <%= t("courses.cart") %> <%= current_cart.courses.count %>
+          <% end %>
+        </li>
       <% else %>
         <li class="nav-item">
           <%= link_to t("users.sign_up"), new_registration_path(:user), class: "nav-link" %>
