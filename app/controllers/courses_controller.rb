@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:edit, :update, :show, :destroy]
-  before_action :check_user_role
+  before_action :check_user_role, except: [:show]
 
   def index
     current_user.admin? ? @courses = Course.all : @courses = current_user.courses
@@ -51,7 +51,7 @@ class CoursesController < ApplicationController
   end
 
   def set_course
-    @course = current_user.courses.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def check_user_role
