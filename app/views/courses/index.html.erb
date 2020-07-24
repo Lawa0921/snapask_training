@@ -12,37 +12,48 @@
     <td><%= t("delete") %></td>
   </thead>
   <tbody>
-    <% @courses.each do |course|%>
+    <% if @courses.present?%>
+      <% @courses.each do |course|%>
+        <tr>
+          <td>
+            <%= course.name %>
+          </td>
+          <td>
+            <%= course.price %>
+          </td>
+          <td>
+            <%= course.currency %>
+          </td>
+          <td>
+            <%= i18n_enum("course", "type_of_course", course.type_of_course) %>
+          </td>
+          <td>
+            <%= course.public %>
+          </td>
+          <td>
+            <%= course.url %>
+          </td>
+          <td>
+            <%= calculate_time_left(course.valididy_period) %>
+          </td>
+          <td>
+            <%= link_to t("show"), course_path(course), class: "btn btn-primary" %>
+          </td>
+          <td>
+            <%= link_to t("edit"), edit_course_path(course), class: "btn btn-success" %>
+          </td>
+          <td>
+            <%= link_to t("delete"), course_path(course), data: {method: "DELETE", confirm: t("courses.confirm.delete")}, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td>
-          <%= course.name %>
-        </td>
-        <td>
-          <%= course.price %>
-        </td>
-        <td>
-          <%= course.currency %>
-        </td>
-        <td>
-          <%= i18n_enum("course", "type_of_course", course.type_of_course) %>
-        </td>
-        <td>
-          <%= course.public %>
-        </td>
-        <td>
-          <%= course.url %>
-        </td>
-        <td>
-          <%= calculate_time_left(course.valididy_period) %>
-        </td>
-        <td>
-          <%= link_to t("show"), course_path(course), class: "btn btn-primary" %>
-        </td>
-        <td>
-          <%= link_to t("edit"), edit_course_path(course), class: "btn btn-success" %>
-        </td>
-        <td>
-          <%= link_to t("delete"), course_path(course), data: {method: "DELETE", confirm: t("courses.confirm.delete")}, class: "btn btn-danger" %>
+        <td colspan="10" align="center">
+          <%= t("courses.none_message")%>
+          <div>
+            <%= link_to t("courses.new"), new_course_path, class: "btn btn-primary"%>
+          </div>
         </td>
       </tr>
     <% end %>

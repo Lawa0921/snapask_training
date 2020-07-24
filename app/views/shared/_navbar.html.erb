@@ -13,12 +13,14 @@
         <li class="nav-item">
           <%= link_to t("users.edit_account"), edit_registration_path(:user), class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to t("courses.list"), courses_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t("courses.new"), new_course_path, class: "nav-link" %>
-        </li>
+        <% if teacher_or_admin? %>
+          <li class="nav-item">
+            <%= link_to t("courses.list"), courses_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t("courses.new"), new_course_path, class: "nav-link" %>
+          </li>
+        <% end %>
       <% else %>
         <li class="nav-item">
           <%= link_to t("users.sign_up"), new_registration_path(:user), class: "nav-link" %>
