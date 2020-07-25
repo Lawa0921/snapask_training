@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "User", type: :model do
-  describe "User model validation" do
+  describe "model validation" do
     let(:user) { create(:user) }
     context "可正常建立" do
       it "when 正常填入" do 
