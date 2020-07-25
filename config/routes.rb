@@ -7,4 +7,5 @@ Rails.application.routes.draw do
       post :add, path:'add/:id'
     end
   end
+  mount ApiRoot => ApiRoot::PREFIX
 end
