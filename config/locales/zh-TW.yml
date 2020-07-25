@@ -13,6 +13,9 @@ zh-TW:
             has_one: 由於 %{record} 需要此記錄，所以無法移除記錄
             has_many: 由於 %{record} 需要此記錄，所以無法移除記錄
       course:
+        public: "是否公開"
+        type_of_course: "種類"
+        currency: "幣別"
         name: "課程名"
         price: "價格"
         valididy_period: "有限期限"
@@ -271,7 +274,7 @@ zh-TW:
     url: "網址"
     valididy_period: "有效天數"
     edit: "編輯課程"
-    update: "更新課程"
+    update: "更新課程成功"
     update_fail: "課程更新失敗"
     delete: "刪除課程成功"
     delete_fail: "刪除課程失敗"

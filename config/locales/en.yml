@@ -12,6 +12,9 @@ en:
           has_one: Cannot delete record because a dependent %{record} exists
           has_many: Cannot delete record because dependent %{record} exist
     course:
+      public: "Public"
+      type: "Type"
+      currency: "Currency"
       name: "Name"
       price: "Price"
       valididy_period: "Valididy period"
