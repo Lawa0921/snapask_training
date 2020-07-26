@@ -13,6 +13,9 @@
         <li class="nav-item">
           <%= link_to t("users.edit_account"), edit_registration_path(:user), class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to t("users.purchased_courses"), purchased_courses_path, class: "nav-link" %>
+        </li>
         <% if teacher_or_admin? %>
           <li class="nav-item">
             <%= link_to t("courses.list"), courses_path, class: "nav-link" %>

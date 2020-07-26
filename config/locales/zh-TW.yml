@@ -260,6 +260,7 @@ zh-TW:
       current_password: "需要輸入當前密碼以確認變更"
     confirm:
       cancel: "您確定要刪除您的帳號嗎？"
+    purchased_courses: "已購買課程"
   courses:
     list: "課程清單"
     new: "新增課程"

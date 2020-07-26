@@ -261,6 +261,7 @@ en:
       current_password: "we need your current password to confirm your changes"
     confirm:
       cancel: "Are you sure you want to cancel your account?"
+    purchased_courses: "Purchased courses"
   courses:
     list: "Course list"
     new: "New course"

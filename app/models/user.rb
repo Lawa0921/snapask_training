@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :courses
+  has_many :purchased_courses
   has_one :api_access_token
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
