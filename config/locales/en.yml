@@ -290,6 +290,7 @@ en:
     cart_notice: "Can't add seem course to cart"
     add_cart_success: "Add course success"
     cart: "Cart"
+    purchased_course_notice: "Purchased course"
   show: "Show"
   edit: "Edit"
   delete: "Delete"
