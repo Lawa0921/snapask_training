@@ -1,5 +1,5 @@
 class ApiRoot < Grape::API
   PREFIX = '/api'.freeze
   format :json
-  mount V0::Base
+  mount ApiV0::Base
 end
