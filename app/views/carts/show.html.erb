@@ -37,4 +37,4 @@
 <% end %>
 
 <%= link_to t("keep_shoping"), root_path, class: 'btn btn-primary' %>
-<%= link_to t("checkout"), '#', class: 'btn btn-danger' unless current_cart.empty? %>
+<%= link_to t("checkout"), cart_path, method: "POST", class: 'btn btn-danger' unless current_cart.empty? %>

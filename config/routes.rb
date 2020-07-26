@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
   resources :courses
-  resource :cart, only: [:show, :destroy] do
+  resources :purchased_courses, only: [:index]
+  resource :cart, only: [:show, :destroy, :create] do
     collection do
       post :add, path:'add/:id'
     end
