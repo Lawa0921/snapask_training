@@ -19,7 +19,7 @@ module ApiV0
           rack_response({ 'message' => '404 Not found' }.to_json, 404)
         end
 
-        # 任何不存在的路由都返回 404 Not Found
+        # 任何不存在的路徑都返回 404 Not Found
         route :any, '*path' do
           error!('404 Not Found', 404)
         end

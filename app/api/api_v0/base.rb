@@ -5,6 +5,7 @@ module ApiV0
     include ApiV0::ExceptionHandlers
     use ApiV0::Auth::Middleware
 
+    mount Courses
     mount Ping
   end
 end
