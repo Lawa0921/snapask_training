@@ -12,7 +12,7 @@ module ApiV0
       end
 
       def token
-        @token = ApiAccessToken.joins(:user).where(key: @params[:access_key]).first
+        @token = User.where(api_access_token: @params[:access_key]).first
       end
 
       def check_token!
