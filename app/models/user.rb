@@ -10,9 +10,9 @@ class User < ApplicationRecord
 
   private
   def new_key
-    key = SecureRandom.urlsafe_base64(30).tr('_-', 'xx')
+    key = SecureRandom.urlsafe_base64(30)
     while ApiAccessToken.where(key: key).any?
-      key = SecureRandom.urlsafe_base64(30).tr('_-', 'xx')
+      key = SecureRandom.urlsafe_base64(30)
     end
     return key
   end
