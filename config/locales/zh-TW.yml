@@ -295,6 +295,7 @@ zh-TW:
     cleand_cart: "已清空購物車"
     cart: "購物車"
     purchased_course_notice: "已成功購買課程"
+    check_expirt_date: "該課程尚未過期，請勿重複購買"
   show: "檢視"
   edit: "編輯"
   delete: "刪除"

@@ -4,6 +4,7 @@ RSpec.feature "Carts", type: :feature do
   let (:teacher_user) { create(:user, role: 1 ) }
   let (:teachers_course) { create(:course, name: "teachers_course", user_id: teacher_user.id ) }
   let (:courses) {create_list(:course, 10, user_id: teacher_user.id)}
+  let (:purchased_course) { create(:purchased_course, user_id: member_user.id, course_id: teachers_course.id) }
 
   describe "When add course to cart" do
     before do
@@ -31,6 +32,17 @@ RSpec.feature "Carts", type: :feature do
       end
       it "should fail" do
         expect(page).to have_content I18n.t("courses.cart_notice")
+      end
+    end
+    context "when try to add own course" do
+      before do
+        purchased_course
+        visit root_path
+        find(:css, ".main-card-link:first-child").click
+        click_link I18n.t("add_to_cart")
+      end
+      it "should be fail" do
+        expect(page).to have_content I18n.t("courses.check_expirt_date")
       end
     end
   end

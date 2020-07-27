@@ -296,6 +296,7 @@ en:
     add_cart_success: "Add course success"
     cart: "Cart"
     purchased_course_notice: "Purchased course"
+    check_expirt_date: "Check expirt date"
   show: "Show"
   edit: "Edit"
   delete: "Delete"
