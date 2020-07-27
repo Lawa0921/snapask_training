@@ -1,9 +1,13 @@
 class CartsController < ApplicationController
   def add
     course = Course.find(params[:id])
-    current_cart.add_course(course)
-    session[:cart] = current_cart.to_hash
-    current_cart.add_success ? flash[:notice] = t("courses.add_cart_success") : flash[:notice] = t("courses.cart_notice")
+    if PurchasedCourse.check_course_expirt_date?(course, current_user)
+      flash[:notice] = t("courses.check_expirt_date")
+    else
+      current_cart.add_course(course)
+      session[:cart] = current_cart.to_hash
+      current_cart.add_success ? flash[:notice] = t("courses.add_cart_success") : flash[:notice] = t("courses.cart_notice")
+    end
     redirect_to root_path
   end
 
