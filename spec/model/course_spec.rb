@@ -37,13 +37,6 @@ RSpec.describe "Course", type: :model do
           expect(course.errors.full_messages).to include "#{I18n.t("activerecord.attributes.course.type_of_course")} #{I18n.t('errors.messages.blank')}"
         end
       end
-      context "public 欄位" do
-        it "public 未填" do
-          course.public = nil
-          expect(course).not_to be_valid
-          expect(course.errors.full_messages).to include "#{I18n.t("activerecord.attributes.course.public")} #{I18n.t('errors.messages.blank')}"
-        end
-      end
       context "valididy_period 欄位" do
         it "valididy_period 未填" do
           course.valididy_period = nil
