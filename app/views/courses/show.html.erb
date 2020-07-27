@@ -22,5 +22,9 @@
   </div>
 
   <div>
-    <%= link_to t("add_to_cart"), add_cart_path(@course), method: "POST", class: "btn btn-success"%>
+    <% if @course.public %>
+      <%= link_to t("add_to_cart"), add_cart_path(@course), method: "POST", class: "btn btn-success"%>
+    <% else %>
+      <button type="button" class="btn btn-secondary" disabled><%= I18n.t("courses.unpublic")%></button>
+    <% end %>
   </div>

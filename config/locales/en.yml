@@ -130,6 +130,9 @@ en:
       month: Month
       year: Year
   errors:
+    purchased_course:
+      owner: "Can't purchase own course"
+      public: "Can't purchase not public course"
     format: "%{attribute} %{message}"
     messages:
       accepted: must be accepted
@@ -273,6 +276,7 @@ en:
     currency: "Currency"
     type: "Type"
     public: "Public"
+    unpublic: "Unpublic"
     url: "Url"
     valididy_period: "Valididy period"
     edit: "Edit course"
