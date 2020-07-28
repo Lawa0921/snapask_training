@@ -32,6 +32,9 @@ en:
         science: "Science"
         history: "History"
         other: "Other"
+    errors:
+      messages:
+        record_invalid: "Validation failed: %{errors}"
   date:
     abbr_day_names:
     - Sun

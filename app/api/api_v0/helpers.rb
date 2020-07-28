@@ -8,5 +8,9 @@ module ApiV0
     def current_user
       @current_user ||= @env["api_v0.user"]
     end
+
+    def permitted_params
+      @permitted_params ||= declared(params, include_missing: false, include_parent_namespaces: false)
+    end
   end
 end

@@ -15,13 +15,15 @@ RSpec.feature "Purchased course", type: :model do
     end
     context "when 建立失敗" do
       context "嘗試購買自己的課程" do
-        it "should 加入錯誤" do
-          expect(owner_fail_purchased_course.errors.full_messages).to eq(["User #{I18n.t("errors.purchased_course.owner")}"])
+        it "should 失敗" do
+          @owner_fail_purchased_course = PurchasedCourse.new(user_id: teacher_user.id, course_id: course.id)
+          expect(@owner_fail_purchased_course).not_to be_valid
         end
       end
       context "嘗試購買未公開的課程" do
-        it "should 加入錯誤" do
-          expect(public_fail_purchased_course.errors.full_messages).to eq(["Course #{I18n.t("errors.purchased_course.public")}"])
+        it "should 失敗" do
+          @public_fail_purchased_course = PurchasedCourse.new(user_id: member_user.id, course_id: unpublic_course.id)
+          expect(@public_fail_purchased_course).not_to be_valid
         end
       end
     end

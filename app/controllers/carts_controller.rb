@@ -21,7 +21,8 @@ class CartsController < ApplicationController
 
   def create
     current_cart.courses.each do |course|
-      PurchasedCourse.create(user_id: current_user.id, course_id: course.id, expirt_date: (DateTime.now + course.valididy_period.days))
+      purchased_course = PurchasedCourse.new(user_id: current_user.id, course_id: course.id )
+      purchased_course.save unless purchased_course.errors.any?
     end
     session[:cart] = nil
     redirect_to root_path, notice: t("courses.purchased_course_notice")

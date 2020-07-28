@@ -7,5 +7,6 @@ module ApiV0
 
     mount Courses
     mount Ping
+    mount PurchasedCourses
   end
 end
