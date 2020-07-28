@@ -4,7 +4,9 @@ module ApiV0
 
     desc "Get all your courses"
     get "/courses" do
-      current_user.courses
+      courses = current_user.courses
+
+      present courses, with: ApiV0::Entities::Course
     end
   end
 end

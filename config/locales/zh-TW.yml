@@ -33,6 +33,9 @@ zh-TW:
           science: "自然"
           history: "歷史"
           other: "其他"
+    errors:
+      messages:
+        record_invalid: "校驗失敗: %{errors}"
   date:
     abbr_day_names:
     - 周日
