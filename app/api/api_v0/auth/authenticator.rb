@@ -8,15 +8,15 @@ module ApiV0
 
       def authenticate!
         check_token!
-        token
+        find_user_with_token
       end
 
-      def token
-        @token = User.where(api_access_token: @params[:access_key]).first
+      def find_user_with_token
+        @user = User.find_by!(api_access_token: @params[:access_key])
       end
 
       def check_token!
-        return @params[:access_key] unless token
+        return @params[:access_key] unless find_user_with_token
       end
     end
   end

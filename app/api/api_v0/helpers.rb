@@ -6,7 +6,7 @@ module ApiV0
     end
 
     def current_user
-      @current_user ||= env["api_v0.user"]
+      @current_user ||= @env["api_v0.user"]
     end
   end
 end
