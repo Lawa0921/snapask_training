@@ -19,6 +19,10 @@ module ApiV0
           rack_response({ 'message' => '404 Not found' }.to_json, 404)
         end
 
+        rescue_from PurchasedCourseError do
+          rack_response({ 'message' => "400 Purchased course fail"}.to_json, 400)
+        end
+
         # 任何不存在的路徑都返回 404 Not Found
         route :any, '*path' do
           error!('404 Not Found', 404)
@@ -42,6 +46,12 @@ module ApiV0
   class AuthorizationError < Error
     def initialize
       super code: 2001, text: 'Authorization failed', status: 401
+    end
+  end
+
+  class PurchasedCourseError < Error
+    def initialize
+      super code: 400, text: "Purchased course fail", status: 400
     end
   end
 end

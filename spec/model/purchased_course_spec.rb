@@ -8,7 +8,8 @@ RSpec.feature "Purchased course", type: :model do
   describe "model validation" do
     context "可以正常建立" do
       it "when 正常填入" do
-        expect(success_purchased_course).to be_valid 
+        record = PurchasedCourse.new(user_id: member_user.id, course_id: course.id)
+        expect(record.save).to eq true 
       end
     end
     context "when 建立失敗" do

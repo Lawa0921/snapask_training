@@ -137,6 +137,7 @@ zh-TW:
     purchased_course:
       owner: "不能購買自己的課程"
       public: "不能購買未開啟的課程"
+      expirt_date: "不能購買已擁有且還未過期的課程"
     format: "%{attribute} %{message}"
     messages:
       accepted: 必須是可被接受的

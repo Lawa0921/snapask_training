@@ -7,11 +7,10 @@ module ApiV0
     end
     post "purchased_courses" do
       purchased_course = current_user.purchased_courses.new(declared(params, include_missing: false).except(:access_key))
-
       if purchased_course.save
         present purchased_course
       else
-        raise StandardError, $!
+        raise PurchasedCourseError
       end
     end
   end
