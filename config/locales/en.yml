@@ -136,6 +136,7 @@ en:
     purchased_course:
       owner: "Can't purchase own course"
       public: "Can't purchase not public course"
+      expirt_date: "Can't purchase unexpired course"
     format: "%{attribute} %{message}"
     messages:
       accepted: must be accepted

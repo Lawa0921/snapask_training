@@ -8,16 +8,47 @@ RSpec.feature "Purchased course", type: :request do
   describe "POST" do
     context "/api/v0/purchased_courses" do
       before do
-        teachers_course
         @course_id = teachers_course.id
-        @access_key = member_user.api_access_token
       end
-      it "should be created successfully" do
-        post "/api/v0/purchased_courses", params: { access_key: @access_key, course_id: @course_id}
-        result = JSON.parse(response.body)
-        expect(response.status).to eq(201)
-        expect(result["course_id"]).to eq(@course_id)
-        expect(result["user_id"]).to eq(member_user.id)
+
+      context "create" do
+        before do
+          access_key = member_user.api_access_token
+          post "/api/v0/purchased_courses", params: { access_key: access_key, course_id: @course_id}
+          @result = JSON.parse(response.body)
+        end
+        it "should be successful" do
+          expect(response.status).to eq(201)
+          expect(@result["course_id"]).to eq(@course_id)
+          expect(@result["user_id"]).to eq(member_user.id)
+        end
+      end
+
+      context "when 購買自己的課程" do
+        before do
+          access_key = teacher_user.api_access_token
+          post "/api/v0/purchased_courses", params: { access_key: access_key, course_id: @course_id}
+          @result = JSON.parse(response.body)
+        end
+        it "should be create failed" do
+          expect(response).to be_a_bad_request
+          expect(response.status).to eq(400)
+          expect(@result["message"]).to eq("400 Purchased course fail")
+        end
+      end
+
+      context "when 購買已擁有且還未過期的課程" do
+        before do
+          purchased_course
+          access_key = member_user.api_access_token
+          post "/api/v0/purchased_courses", params: { access_key: access_key, course_id: @course_id}
+          @result = JSON.parse(response.body)
+        end
+        it "should be create failed" do
+          expect(response).to be_a_bad_request
+          expect(response.status).to eq(400)
+          expect(@result["message"]).to eq("400 Purchased course fail")
+        end
       end
     end
   end
