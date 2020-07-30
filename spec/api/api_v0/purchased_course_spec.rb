@@ -7,6 +7,10 @@ RSpec.feature "Purchased course", type: :request do
   let (:purchased_course) { create(:purchased_course, user_id: member_user.id, course_id: teachers_course.id ) }
   let (:purchased_courses) { create_list(:purchased_course, 10, user_id: member_user.id) }
   let (:expired_course) { create(:purchased_course, user_id: member_user.id)}
+  let (:math_course) { create(:course, type_of_course: "math", user_id: teacher_user.id) }
+  let (:english_course) { create(:course, type_of_course: "english", user_id: teacher_user.id)}
+  let (:math_purchased_course) { create(:purchased_course, user_id: member_user.id, course_id: math_course.id) }
+  let (:english_purchased_course) { create(:purchased_course, user_id: member_user.id, course_id: english_course.id) }
   describe "POST" do
     context "/api/v0/purchased_courses" do
       before do
@@ -83,18 +87,16 @@ RSpec.feature "Purchased course", type: :request do
       end
       context "Search successful with type_of_course" do
         before do
-          purchased_courses
+          math_purchased_course
+          english_purchased_course
           access_key = member_user.api_access_token
           get "/api/v0/purchased_courses", params: { access_key: access_key, type_of_course: "math" }
           @result = JSON.parse(response.body)
         end
         it "should return math type courses" do
-          selected_courses = @result.select {|course| course }
           expect(response.status).to eq(200)
+          expect(@result.length).to eq(1)
           expect(response.body).not_to include("english")
-          expect(response.body).not_to include("japanese")
-          expect(response.body).not_to include("social")
-          expect(response.body).not_to include("science")
         end
       end
       context "Search successful with unexpired" do
@@ -109,6 +111,23 @@ RSpec.feature "Purchased course", type: :request do
         it "should return 0 courses" do
           expect(response.status).to eq(200)
           expect(@result.length).to eq(0)
+        end
+      end
+      context "Search successful with unexpired and type_of_course" do
+        before do
+          Timecop.travel(Time.local(2000, 6, 14, 10, 0, 0))
+          expired_course
+          Timecop.return
+          math_purchased_course
+          english_purchased_course
+          access_key = member_user.api_access_token
+          get "/api/v0/purchased_courses", params: { access_key: access_key, type_of_course: "math", unexpired: true }
+          @result = JSON.parse(response.body)
+        end
+        it "should return comply with courses" do
+          expect(response.status).to eq(200)
+          expect(@result.length).to eq(1)
+          expect(response.body).not_to include("english")
         end
       end
     end

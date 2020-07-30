@@ -17,8 +17,8 @@ module ApiV0
     end
 
     def set_purchased_courses(records, params)
-      records = select_course_type(records, params[:type_of_course]) if params[:type_of_course].present?
       records = select_unexpired_course(records) if params[:unexpired]
+      records = select_course_type(records, params[:type_of_course]) if params[:type_of_course].present?
       return records
     end
 
