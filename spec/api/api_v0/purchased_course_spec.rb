@@ -5,13 +5,14 @@ RSpec.feature "Purchased course", type: :request do
   let (:teachers_course) { create(:course, name: "teachers_course", user_id: teacher_user.id ) }
   let (:unpublic_course) { create(:course, name: "unpublic_course", user_id: teacher_user.id, public: false ) }
   let (:purchased_course) { create(:purchased_course, user_id: member_user.id, course_id: teachers_course.id ) }
+  let (:purchased_courses) { create_list(:purchased_course, 10, user_id: member_user.id) }
   describe "POST" do
     context "/api/v0/purchased_courses" do
       before do
         @course_id = teachers_course.id
       end
 
-      context "create" do
+      context "create successful" do
         before do
           access_key = member_user.api_access_token
           post "/api/v0/purchased_courses", params: { access_key: access_key, course_id: @course_id}
@@ -61,6 +62,24 @@ RSpec.feature "Purchased course", type: :request do
           expect(response).to be_a_bad_request
           expect(response.status).to eq(400)
           expect(@result["message"]).to eq("400 Purchased course fail")
+        end
+      end
+    end
+  end
+  describe "GET" do
+    context "/api/v0/purchased_courses" do
+      before do
+        purchased_courses
+        @access_key = member_user.api_access_token
+      end
+      context "search successful" do
+        before do
+          get "/api/v0/purchased_courses", params: { access_key: @access_key }
+          @result = JSON.parse(response.body)
+        end
+        it "should return 10 courses" do
+          expect(response.status).to eq(200)
+          expect(@result.length).to eq(10)
         end
       end
     end
