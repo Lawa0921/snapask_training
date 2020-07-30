@@ -54,6 +54,7 @@ end
 
 
 group :test do
+  gem 'timecop', '~> 0.9.1'
   gem 'rspec-rails', '~> 4.0'
   gem 'capybara', '~> 3.32'
   gem 'factory_bot_rails', '~> 6.0'
