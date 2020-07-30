@@ -1,0 +1,18 @@
+<% @purchased_courses.each do |purchased_course| %>
+  <div class="main-card-link col-12"> 
+    <div class="card m-3">
+      <h5 class="px-3 py-1">
+        <%= purchased_course.course.name %>
+      </h5>
+      <div class="card-body px-3 py-1">
+        <%= purchased_course.course.description %>
+        <div class="type-info">
+          <%= i18n_enum("course", "type_of_course", purchased_course.course.type_of_course) %>
+        </div>
+        <div class="valididy_period-info">
+          <%= t("courses.valididy_period")%> <%= calculate_time_left(purchased_course.expirt_date) %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

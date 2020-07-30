@@ -1,0 +1,30 @@
+  <h1><%= @course.name %></h1>
+  <h3><%= t("courses.type")%>：<%= i18n_enum("course", "type_of_course", @course.type_of_course) %></h3>
+
+  <div>
+    <%= t("courses.price")%>：<%= @course.price %> <%= @course.currency %>
+  </div>
+
+  <div>
+    <%= t("courses.public")%>：<%= @course.public %>
+  </div>
+
+  <div>
+    <%= t("courses.url")%>： <%= @course.url %>
+  </div>
+
+  <div>
+    <%= t("courses.description")%>：<%= @course.description %>
+  </div>
+
+  <div>
+    <%= t("courses.valididy_period")%>：<%= @course.valididy_period %> <%= t("datetime.prompts.day")%>
+  </div>
+
+  <div>
+    <% if @course.public %>
+      <%= link_to t("add_to_cart"), add_cart_path(@course), method: "POST", class: "btn btn-success"%>
+    <% else %>
+      <button type="button" class="btn btn-secondary" disabled><%= I18n.t("courses.unpublic")%></button>
+    <% end %>
+  </div>

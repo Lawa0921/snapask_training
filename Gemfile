@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'grape', '~> 1.4'
+gem 'webpacker', '~> 5.1', '>= 5.1.1'
+gem 'devise', '~> 4.7', '>= 4.7.2'
+gem 'grape-entity', '~> 0.8.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use postgresql as the database for Active Record
@@ -48,6 +52,15 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+
+group :test do
+  gem 'timecop', '~> 0.9.1'
+  gem 'rspec-rails', '~> 4.0'
+  gem 'capybara', '~> 3.32'
+  gem 'factory_bot_rails', '~> 6.0'
+  gem 'faker', '~> 2.12'
+  gem 'database_cleaner', '~> 1.8'
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
