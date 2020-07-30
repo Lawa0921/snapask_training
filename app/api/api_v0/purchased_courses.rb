@@ -22,10 +22,10 @@ module ApiV0
         optional :unexpired, type: Boolean, desc: "True or false"
       end
       purchased_courses = current_user.purchased_courses
+      if params[:type_of_course].present?
+        purchased_courses = purchased_courses.select {|record| record.course.type_of_course == params[:type_of_course] }
+      end
       present purchased_courses, with: ApiV0::Entities::PurchasedCourse
-      # courses = purchased_courses.map(&:course)
-      # putchased_courses.where() if :type_of_course.present?
-
     end
   end
 end

@@ -80,6 +80,22 @@ RSpec.feature "Purchased course", type: :request do
           expect(@result.length).to eq(10)
         end
       end
+      context "search successful with type_of_course" do
+        before do
+          purchased_courses
+          access_key = member_user.api_access_token
+          get "/api/v0/purchased_courses", params: { access_key: access_key, type_of_course: "math" }
+          @result = JSON.parse(response.body)
+        end
+        it "should return math type courses" do
+          selected_courses = @result.select {|course| course }
+          expect(response.status).to eq(200)
+          expect(response.body).not_to include("english")
+          expect(response.body).not_to include("japanese")
+          expect(response.body).not_to include("social")
+          expect(response.body).not_to include("science")
+        end
+      end
     end
   end
 end
