@@ -21,9 +21,8 @@ module ApiV0
         optional :type_of_course, type: String, desc: "What course type do you want to find"
         optional :unexpired, type: Boolean, desc: "True or false"
       end
-      byebug
       purchased_courses = current_user.purchased_courses
-      present purchased_courses
+      present purchased_courses, with: ApiV0::Entities::PurchasedCourse
       # courses = purchased_courses.map(&:course)
       # putchased_courses.where() if :type_of_course.present?
 

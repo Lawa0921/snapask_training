@@ -68,13 +68,11 @@ RSpec.feature "Purchased course", type: :request do
   end
   describe "GET" do
     context "/api/v0/purchased_courses" do
-      before do
-        purchased_courses
-        @access_key = member_user.api_access_token
-      end
       context "search successful" do
         before do
-          get "/api/v0/purchased_courses", params: { access_key: @access_key }
+          purchased_courses
+          access_key = member_user.api_access_token
+          get "/api/v0/purchased_courses", params: { access_key: access_key }
           @result = JSON.parse(response.body)
         end
         it "should return 10 courses" do
