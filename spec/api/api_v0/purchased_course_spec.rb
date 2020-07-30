@@ -6,6 +6,7 @@ RSpec.feature "Purchased course", type: :request do
   let (:unpublic_course) { create(:course, name: "unpublic_course", user_id: teacher_user.id, public: false ) }
   let (:purchased_course) { create(:purchased_course, user_id: member_user.id, course_id: teachers_course.id ) }
   let (:purchased_courses) { create_list(:purchased_course, 10, user_id: member_user.id) }
+  let (:expired_course) { create(:purchased_course, user_id: member_user.id)}
   describe "POST" do
     context "/api/v0/purchased_courses" do
       before do
@@ -80,7 +81,7 @@ RSpec.feature "Purchased course", type: :request do
           expect(@result.length).to eq(10)
         end
       end
-      context "search successful with type_of_course" do
+      context "Search successful with type_of_course" do
         before do
           purchased_courses
           access_key = member_user.api_access_token
@@ -94,6 +95,20 @@ RSpec.feature "Purchased course", type: :request do
           expect(response.body).not_to include("japanese")
           expect(response.body).not_to include("social")
           expect(response.body).not_to include("science")
+        end
+      end
+      context "Search successful with unexpired" do
+        before do
+          Timecop.travel(Time.local(2000, 6, 14, 10, 0, 0))
+          expired_course
+          Timecop.return
+          access_key = member_user.api_access_token
+          get "/api/v0/purchased_courses", params: { access_key: access_key, unexpired: true }
+          @result = JSON.parse(response.body)
+        end
+        it "should return 0 courses" do
+          expect(response.status).to eq(200)
+          expect(@result.length).to eq(0)
         end
       end
     end
