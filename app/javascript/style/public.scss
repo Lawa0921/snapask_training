@@ -43,3 +43,28 @@ body {
   text-decoration: none;
   color: $text-color;
 }
+
+.footer {
+  padding: 1.5rem 0px;
+  .footer-container {
+    max-width: 68rem;
+    padding: 0px 1.5rem;
+    text-align: center;
+    .footer-icon-wrap {
+      .footer-icon {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        text-align: center;
+        color: $text-color;
+        margin: 0 10px;
+      }
+    }
+  }
+  .footer-info {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 60px;
+    margin: auto;
+  }
+}
