@@ -4,6 +4,8 @@ class PurchasedCourse < ApplicationRecord
   before_create :add_expirt_date
   validate :check_course_owner?, :check_course_public?, :check_own_course_expirt?
   scope :unexpired, -> { where("expirt_date > ?", DateTime.now)}
+  scope :select_course_type, -> (type) { joins(:course).where( "courses.type_of_course = ? " ,  Course.type_of_courses[type] ) }
+  scope :select_unexpired_course, -> { where( "expirt_date > ?", DateTime.now ) }
 
   def check_course_owner?
     errors.add(:user_id, I18n.t('errors.purchased_course.owner')) if course.user.id == user.id
@@ -14,7 +16,7 @@ class PurchasedCourse < ApplicationRecord
   end
 
   def check_own_course_expirt?
-    errors.add(:expirt_date, I18n.t('errors.purchased_course.expirt_date')) if self.user.purchased_courses.where("course_id = ? AND  user_id = ? AND expirt_date > ?", self.course_id, self.user_id, DateTime.now).first.present?
+    errors.add(:expirt_date, I18n.t('errors.purchased_course.expirt_date')) if self.user.purchased_courses.where("course_id = ? AND expirt_date > ?", self.course_id, DateTime.now).first.present?
   end
 
   def self.check_course_expirt_date?(course, user)
@@ -22,6 +24,6 @@ class PurchasedCourse < ApplicationRecord
   end
 
   def add_expirt_date
-    self.expirt_date = DateTime.now + Course.find(self.course_id).valididy_period.days
+    self.expirt_date = course.valididy_period.days.after
   end
 end

@@ -21,7 +21,7 @@ module ApiV0
         optional :type_of_course, type: String, desc: "What course type do you want to find"
         optional :unexpired, type: Boolean, desc: "True or false"
       end
-      purchased_records = set_purchased_courses(current_user.purchased_courses, params) 
+      purchased_records = set_purchased_courses(current_user.purchased_courses, params)
       present purchased_records, with: ApiV0::Entities::PurchasedCourse
     end
   end
