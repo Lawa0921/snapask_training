@@ -3,6 +3,7 @@ class PurchasedCourse < ApplicationRecord
   belongs_to :course
   before_create :add_expirt_date
   validate :check_course_owner?, :check_course_public?, :check_own_course_expirt?
+  scope :unexpired, -> { where("expirt_date > ?", DateTime.now)}
 
   def check_course_owner?
     errors.add(:user_id, I18n.t('errors.purchased_course.owner')) if course.user.id == user.id
