@@ -146,7 +146,7 @@ RSpec.feature "Courses", type: :feature do
         visit root_path
         click_link I18n.t("courses.list")
       end
-      it "should be see one course" do
+      it "should be see two course" do
         expect(page).to have_content "teachers_course"
         expect(page).to have_content "admins_course"
       end
