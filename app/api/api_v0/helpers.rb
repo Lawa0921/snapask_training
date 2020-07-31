@@ -8,17 +8,9 @@ module ApiV0
       @current_user ||= @env["api_v0.user"]
     end
 
-    def select_course_type(records, param)
-      records.select {|record| record.course.type_of_course == param }
-    end
-
-    def select_unexpired_course(records)
-      records.where("expirt_date > ?", DateTime.now)
-    end
-
     def set_purchased_courses(records, params)
-      records = select_unexpired_course(records) if params[:unexpired]
-      records = select_course_type(records, params[:type_of_course]) if params[:type_of_course].present?
+      records = records.select_unexpired_course if params[:unexpired]
+      records = records.select_course_type(params[:type_of_course]) if params[:type_of_course].present?
       return records
     end
 

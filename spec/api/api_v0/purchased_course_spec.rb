@@ -69,6 +69,19 @@ RSpec.feature "Purchased course", type: :request do
           expect(@result["message"]).to eq("400 Purchased course fail")
         end
       end
+
+      context "when 沒有傳入 course_id" do
+        before do
+          access_key = member_user.api_access_token
+          post "/api/v0/purchased_courses", params: { access_key: access_key}
+          @result = JSON.parse(response.body)
+        end
+        it "should be create failed" do
+          expect(response).to be_a_bad_request
+          expect(response.status).to eq(400)
+          expect(@result["message"]).to eq("400 Purchased course fail")
+        end
+      end
     end
   end
   describe "GET" do
@@ -85,6 +98,7 @@ RSpec.feature "Purchased course", type: :request do
           expect(@result.length).to eq(10)
         end
       end
+
       context "Search successful with type_of_course" do
         before do
           math_purchased_course
@@ -99,6 +113,7 @@ RSpec.feature "Purchased course", type: :request do
           expect(response.body).not_to include("english")
         end
       end
+
       context "Search successful with unexpired" do
         before do
           Timecop.travel(Time.local(2000, 6, 14, 10, 0, 0))
@@ -113,6 +128,7 @@ RSpec.feature "Purchased course", type: :request do
           expect(@result.length).to eq(0)
         end
       end
+
       context "Search successful with unexpired and type_of_course" do
         before do
           Timecop.travel(Time.local(2000, 6, 14, 10, 0, 0))
