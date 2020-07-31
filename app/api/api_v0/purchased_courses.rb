@@ -1,12 +1,13 @@
 module ApiV0
   class PurchasedCourses < Grape::API
     desc "Create new purchased course"
-    params do
-      requires :course_id, type: Integer, desc: "Want to buy course"
-      requires :access_key, type: String, desc: "User auth token"
-    end
     post "purchased_courses" do 
-      purchased_course = current_user.purchased_courses.new(declared(params, include_missing: false).except(:access_key))
+      params do
+        requires :course_id, type: Integer, desc: "Want to buy course"
+        requires :access_key, type: String, desc: "User auth token"
+      end
+      raise PurchasedCourseError if params[:course_id].blank?
+      purchased_course = current_user.purchased_courses.new(course_id: params[:course_id])
       if purchased_course.save
         present purchased_course
       else
