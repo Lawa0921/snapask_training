@@ -66,9 +66,7 @@ RSpec.feature "Carts", type: :feature do
       end
       it "should be have two purchased_courses" do
         click_link I18n.t("users.purchased_courses")
-        within('.container') do
-          expect(all('.main-card-link').count).to eq 2
-        end
+        expect(all('.main-card-link').count).to eq 2
       end
     end
   end

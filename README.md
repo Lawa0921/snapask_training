@@ -1,5 +1,5 @@
 # ERD 圖
-![avatar](/public/image/ERD2.png)
+![avatar](/public/image/ERD-3.png)
 # 開發需求
 請做一個簡單的線上課程平台，該平台提供的線上課程都是有時效性，一但過了時效性，使用者就必須重新購買，以再次取用該課程內容。
  1. 需要有一個後台可以讓管理者管理教育課程。
@@ -32,3 +32,6 @@
 加分題：
     1. 使用 Rspec 撰寫測試
     2. 請 deploy 到 Heroku or AWS EC2
+
+# 部屬連結
+[Heroku](https://fast-journey-62924.herokuapp.com/)

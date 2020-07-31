@@ -6,16 +6,18 @@ class Cart
   end
 
   def add_course(course)
-    count = courses.count
-    @courses << course unless @courses.include?(course)
-    courses.count > count ? @add_success = true : @add_success = false
+    if @courses.include?(course)
+      @add_success = false
+    else
+      @add_success = true
+      @courses << course
+    end
   end
 
-  def self.from_hash(hash = nil)
+  def self.from_hash(hash = nil )
     if hash && hash["courses"]
-      course_data = hash["courses"]
       @courses = []
-      course_data.each do |course|
+      hash["courses"].each do |course|
         @courses << Course.find(course["id"])
       end 
       new(@courses)
