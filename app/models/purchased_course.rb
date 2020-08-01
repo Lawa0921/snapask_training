@@ -2,6 +2,7 @@ class PurchasedCourse < ApplicationRecord
   belongs_to :user
   belongs_to :course
   before_create :add_expirt_date
+  enum currency: ["TWD", "USD", "JPD", "CNY"]
   validate :check_course_owner?, :check_course_public?, :check_own_course_expirt?
   scope :unexpired, -> { where("expirt_date > ?", DateTime.now)}
   scope :select_course_type, -> (type) { joins(:course).where( "courses.type_of_course = ? " ,  Course.type_of_courses[type] ) }
