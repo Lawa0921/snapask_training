@@ -1,7 +1,7 @@
 class PurchasedCourse < ApplicationRecord
   belongs_to :user
   belongs_to :course
-  before_create :add_expirt_date
+  before_create :add_course_data
   enum currency: ["TWD", "USD", "JPD", "CNY"]
   validate :check_course_owner?, :check_course_public?, :check_own_course_expirt?
   scope :unexpired, -> { where("expirt_date > ?", DateTime.now)}
@@ -24,7 +24,9 @@ class PurchasedCourse < ApplicationRecord
     where("course_id = ? AND  user_id = ? AND expirt_date > ?", course.id, user.id, DateTime.now).first.present?
   end
 
-  def add_expirt_date
+  def add_course_data
     self.expirt_date = course.valididy_period.days.after
+    self.price = course.price
+    self.currency = course.currency
   end
 end
