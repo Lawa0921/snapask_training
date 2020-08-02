@@ -38,4 +38,10 @@ class Cart
     courses.blank?
   end
 
+  def checkout(user)
+    courses.each do |course|
+      user.purchased_courses.create(course_id: course.id )
+    end
+  end
+
 end
