@@ -1,5 +1,7 @@
 module ApiV0
   class PurchasedCourses < Grape::API
+    before { authenticate! }
+    
     desc "Create new purchased course"
     post "purchased_courses" do 
       params do
