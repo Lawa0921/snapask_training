@@ -34,4 +34,5 @@
     2. 請 deploy 到 Heroku or AWS EC2
 
 # 部屬連結
-[Heroku](https://fast-journey-62924.herokuapp.com/)
+[Heroku 連結](https://fast-journey-62924.herokuapp.com/)
+[AWS 連結](http://3.137.26.185/)
